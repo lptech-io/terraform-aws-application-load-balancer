@@ -1,0 +1,37 @@
+# Windows
+desktop.ini
+Thumbs.db
+
+# OS X
+._*
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Unix
+.directory
+.fuse_hidden*
+.nfs*
+.Trash-*
+
+# General
+.*
+!.editorconfig
+!.gitignore
+
+# GitLab
+!.gitlab-ci.yml
+
+# Terraform
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+!config.d/*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+backend.tf
