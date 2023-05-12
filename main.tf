@@ -12,7 +12,7 @@ resource "aws_lb" "load_balancer" {
     for_each = var.logs_bucket_arn[*] # If logs_bucket_arn is null, then access_logs is not created
 
     content {
-      bucket  = var.logs_bucket_arn
+      bucket  = var.logs_bucket_name
       enabled = true
     }
   }
@@ -45,7 +45,7 @@ resource "aws_lb_listener" "listener_443" {
   load_balancer_arn = aws_lb.load_balancer.arn
   port              = "443"
   protocol          = "HTTPS"
-  ssl_policy = var.elb_security_policy  # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies
+  ssl_policy        = var.elb_security_policy # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies
   default_action {
     type = "fixed-response"
     fixed_response {

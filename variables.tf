@@ -3,9 +3,9 @@ variable "certificate_arn" {
   type        = string
 }
 
-variable "logs_bucket_arn" {
+variable "logs_bucket_name" {
   default     = null
-  description = "Bucket ARN for logs"
+  description = "Bucket name for logs"
   type        = string
 }
 

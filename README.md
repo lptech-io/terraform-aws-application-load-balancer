@@ -33,7 +33,7 @@ No modules.
 | <a name="input_certificate_arn"></a> [certificate\_arn](#input\_certificate\_arn) | ARN of the default SSL server certificate | `string` | n/a | yes |
 | <a name="input_elb_security_policy"></a> [elb\_security\_policy](#input\_elb\_security\_policy) | ELB security policy (https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) | `string` | `"ELBSecurityPolicy-TLS13-1-2-2021-06"` | no |
 | <a name="input_is_internal"></a> [is\_internal](#input\_is\_internal) | States if it's internet-facing or internal | `bool` | `false` | no |
-| <a name="input_logs_bucket_arn"></a> [logs\_bucket\_arn](#input\_logs\_bucket\_arn) | Bucket ARN for logs | `string` | `null` | no |
+| <a name="input_logs_bucket_name"></a> [logs\_bucket\_name](#input\_logs\_bucket\_name) | Bucket name for logs | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the load balancer | `string` | n/a | yes |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet IDs in which deploy the load balancer | `list(string)` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC ID | `string` | n/a | yes |
