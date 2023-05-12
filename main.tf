@@ -20,7 +20,6 @@ resource "aws_lb" "load_balancer" {
   drop_invalid_header_fields = true
   internal                   = var.is_internal
   load_balancer_type         = "application"
-  name                       = var.name
   tags = {
     "Name" = var.name
   }
