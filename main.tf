@@ -14,7 +14,6 @@ resource "aws_lb" "load_balancer" {
     content {
       bucket  = var.logs_bucket_arn
       enabled = true
-      prefix  = lower(var.name)
     }
   }
   drop_invalid_header_fields = true
