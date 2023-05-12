@@ -9,7 +9,7 @@ resource "aws_security_group" "security_group" {
 
 resource "aws_lb" "load_balancer" {
   dynamic "access_logs" {
-    for_each = var.logs_bucket_arn[*] # If logs_bucket_arn is null, then access_logs is not created
+    for_each = var.logs_bucket_name[*] # If logs_bucket_arn is null, then access_logs is not created
 
     content {
       bucket  = var.logs_bucket_name
