@@ -1,3 +1,21 @@
+# AWS Application load balancer terraform module
+This module creates an Application Load balancer on AWS with a dedicated security group and a listener rule on port 80.
+If the variable certificate_arn is specified a new listener rule that listen on port 443 will be created and the rule on port 80 redirect all traffic on port 443
+Into security group are created two ingress rules that permit access to port 80 and 443.
+By default the load balancer is public but setting the variable <b>is_internal</b> to true, is possible to create it as private.
+
+## Usage
+----
+```hcl
+module "load_balancer" {
+  source = "lptech-io/application-load-balancer/aws"
+
+  name = "demo"
+  subnet_ids = ["subnet-0101010101010"]
+  vpc_id = "vpc-0101010101010"
+}
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -23,7 +41,8 @@ No modules.
 | [aws_lb_listener.listener_443](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 | [aws_lb_listener.listener_80](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 | [aws_security_group.security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_security_group_rule.egress_to_everything](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.egress_to_port_443](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.egress_to_port_80](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_from_internet_port_443](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.ingress_from_internet_port_80](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 
@@ -31,7 +50,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_certificate_arn"></a> [certificate\_arn](#input\_certificate\_arn) | ARN of the default SSL server certificate | `string` | n/a | yes |
+| <a name="input_certificate_arn"></a> [certificate\_arn](#input\_certificate\_arn) | ARN of the default SSL server certificate | `string` | `null` | no |
+| <a name="input_drop_invalid_header_fields"></a> [drop\_invalid\_header\_fields](#input\_drop\_invalid\_header\_fields) | Enable/disable the drop of invalid header fields | `bool` | `true` | no |
 | <a name="input_elb_security_policy"></a> [elb\_security\_policy](#input\_elb\_security\_policy) | ELB security policy (https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) | `string` | `"ELBSecurityPolicy-TLS13-1-2-2021-06"` | no |
 | <a name="input_is_internal"></a> [is\_internal](#input\_is\_internal) | States if it's internet-facing or internal | `bool` | `false` | no |
 | <a name="input_logs_bucket_name"></a> [logs\_bucket\_name](#input\_logs\_bucket\_name) | Bucket name for logs | `string` | `null` | no |

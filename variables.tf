@@ -1,6 +1,13 @@
 variable "certificate_arn" {
+  default     = null
   description = "ARN of the default SSL server certificate"
   type        = string
+}
+
+variable "drop_invalid_header_fields" {
+  default     = true
+  description = "Enable/disable the drop of invalid header fields"
+  type        = bool
 }
 
 variable "logs_bucket_name" {
