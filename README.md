@@ -11,7 +11,7 @@ By default the load balancer is public but setting the variable <b>is_internal</
 module "load_balancer" {
   source = "lptech-io/application-load-balancer/aws"
 
-  name = "demo"
+  name_prefix = "demo"
   subnet_ids = ["subnet-0101010101010"]
   vpc_id = "vpc-0101010101010"
 }
