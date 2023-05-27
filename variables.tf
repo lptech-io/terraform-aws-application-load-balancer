@@ -29,7 +29,7 @@ variable "logs_bucket_name" {
 }
 
 variable "name_prefix" {
-  default = null
+  default     = null
   description = "Prefix for load balancer name"
   type        = string
   validation {
