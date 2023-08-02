@@ -20,6 +20,7 @@ resource "aws_lb" "load_balancer" {
   drop_invalid_header_fields = var.drop_invalid_header_fields
   internal                   = var.is_internal
   load_balancer_type         = "application"
+  name                       = var.name
   name_prefix                = var.name_prefix
   security_groups            = [aws_security_group.security_group.id]
   subnets                    = var.subnet_ids
