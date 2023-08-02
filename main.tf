@@ -23,6 +23,9 @@ resource "aws_lb" "load_balancer" {
   name                       = var.name
   security_groups            = [aws_security_group.security_group.id]
   subnets                    = var.subnet_ids
+  tags = {
+    "Name" = var.name
+  }
 }
 
 resource "aws_lb_listener" "listener_80" {
