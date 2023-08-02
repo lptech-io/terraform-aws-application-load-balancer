@@ -1,8 +1,8 @@
 resource "aws_security_group" "security_group" {
-  description = "${var.name_prefix} application load balancer security group"
-  name        = "${var.name_prefix}-sg"
+  description = "${var.name} application load balancer security group"
+  name        = "${var.name}-sg"
   tags = {
-    "Name" = "${var.name_prefix}-sg"
+    "Name" = "${var.name}-sg"
   }
   vpc_id = var.vpc_id
 }
