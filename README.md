@@ -1,22 +1,4 @@
 <!-- BEGIN_TF_DOCS -->
-# AWS Application load balancer terraform module
-This module creates an Application Load balancer on AWS with a dedicated security group and a listener rule on port 80.
-If the variable certificate_arn is specified a new listener rule that listen on port 443 will be created and the rule on port 80 redirect all traffic on port 443
-Into security group are created two ingress rules that permit access to port 80 and 443.
-By default the load balancer is public but setting the variable <b>is_internal</b> to true, is possible to create it as private.
-
-## Usage
-----
-```hcl
-module "load_balancer" {
-  source = "lptech-io/application-load-balancer/aws"
-
-  name_prefix = "demo"
-  subnet_ids = ["subnet-0101010101010"]
-  vpc_id = "vpc-0101010101010"
-}
-```
-
 ## Requirements
 
 No requirements.
