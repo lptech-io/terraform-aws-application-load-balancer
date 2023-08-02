@@ -34,7 +34,7 @@ variable "name_prefix" {
   type        = string
   validation {
     condition     = can(regex("^[a-zA-Z0-9][a-zA-Z0-9-]{0,12}[a-zA-Z0-9]$", var.name_prefix))
-    error_message = "Name must be between 2 and 6 characters long and can contain only alphanumeric characters and hyphens. Can't start or end with a hyphen."
+    error_message = "Name must be between 2 and 12 characters long and can contain only alphanumeric characters and hyphens. Can't start or end with a hyphen."
   }
 }
 
