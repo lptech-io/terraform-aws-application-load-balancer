@@ -91,20 +91,11 @@ resource "aws_security_group_rule" "ingress_from_internet_port_443" {
   type              = "ingress"
 }
 
-resource "aws_security_group_rule" "egress_to_port_80" {
+resource "aws_security_group_rule" "egress_to_all" {
   cidr_blocks       = ["0.0.0.0/0"]
-  from_port         = 80
-  protocol          = "tcp"
+  from_port         = 0
+  protocol          = -1
   security_group_id = aws_security_group.security_group.id
-  to_port           = 80
-  type              = "egress"
-}
-
-resource "aws_security_group_rule" "egress_to_port_443" {
-  cidr_blocks       = ["0.0.0.0/0"]
-  from_port         = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.security_group.id
-  to_port           = 443
+  to_port           = 0
   type              = "egress"
 }
