@@ -26,6 +26,9 @@ resource "aws_lb" "load_balancer" {
   tags = {
     "Name" = var.name
   }
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 resource "aws_lb_listener" "listener_80" {
